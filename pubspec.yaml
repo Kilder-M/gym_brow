@@ -10,6 +10,9 @@ dependencies:
   sqflite: ^2.3.3
   path: ^1.9.0
   get: 4.6.6
+  google_nav_bar: ^5.0.6
+  flutter_localization: ^0.2.0
+  intl: ^0.18.1
   flutter: 
     sdk: flutter
 
@@ -20,4 +23,4 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
-
+  generate: true

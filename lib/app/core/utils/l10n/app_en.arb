@@ -1,0 +1,22 @@
+{
+    "language" : "english",
+    "@language" : {
+        "description": " The current language"
+    },
+    "workout": "Workout",
+    "@workout": {
+        "description": "Workout text"
+    },
+    "home" : "Home",
+    "@home": {
+        "description": "Home text"
+    },
+    "profile" : "Profile",
+    "@profile": {
+        "description": "profile text"
+    },
+    "settings" : "Settings",
+    "@settings": {
+        "description": "settings text"
+    }
+}
