@@ -3,5 +3,12 @@
     "workout" : "Treino",
     "home" : "inicio",
     "profile" : "Perfil",
-     "settings" : "Configurações"
+    "settings" : "Configurações",
+    "monday" : "Segunda",
+    "tuesday" : "Terça",
+    "wednesday" : "Quarta",
+    "thurday" : "Quinta",
+    "friday" : "Sexta",
+    "saturday" : "Sábado",
+    "sunday" : "Domingo"
 }

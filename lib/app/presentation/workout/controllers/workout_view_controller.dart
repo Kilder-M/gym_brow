@@ -6,7 +6,7 @@ import 'package:gymbrow/app/domain/usecases/gets/get_workout_list_by_weekday_use
 class WorkoutViewController extends GetxController {
   var selectedDay = 0.obs;
 
-  Weekday weekdayNumber = Get.arguments;
+  Weekday weekday = Get.arguments;
 
   var workoutList = <WorkoutEntity>[].obs;
 
@@ -14,6 +14,6 @@ class WorkoutViewController extends GetxController {
       Get.find<GetWorkoutListByWeekdayUseCase>();
 
   Future<List<WorkoutEntity>> listar() async {
-    return workoutList.value = await _getWorkoutListByweekday(weekdayNumber.id);
+    return workoutList.value = await _getWorkoutListByweekday(weekday.id);
   }
 }

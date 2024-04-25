@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:gymbrow/app/core/utils/models/weekday_dart';
 
 class WorkoutDaysTab extends StatelessWidget {
@@ -8,13 +9,13 @@ class WorkoutDaysTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Weekday> weekdays = [
-      Weekday(id: 2, nome: 'Segunda'),
-      Weekday(id: 3, nome: 'Terça'),
-      Weekday(id: 4, nome: 'Quarta'),
-      Weekday(id: 5, nome: 'Quinta'),
-      Weekday(id: 6, nome: 'Sexta'),
-      Weekday(id: 7, nome: 'Sábado'),
-      Weekday(id: 1, nome: 'Domingo'),
+      Weekday(id: 2, nome: AppLocalizations.of(context)!.monday),
+      Weekday(id: 3, nome: AppLocalizations.of(context)!.tuesday),
+      Weekday(id: 4, nome: AppLocalizations.of(context)!.wednesday),
+      Weekday(id: 5, nome: AppLocalizations.of(context)!.thurday),
+      Weekday(id: 6, nome: AppLocalizations.of(context)!.friday),
+      Weekday(id: 7, nome: AppLocalizations.of(context)!.saturday),
+      Weekday(id: 1, nome: AppLocalizations.of(context)!.sunday),
     ];
     return Scaffold(
       appBar: AppBar(

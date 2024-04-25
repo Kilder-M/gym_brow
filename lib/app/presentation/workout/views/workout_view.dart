@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:gymbrow/app/domain/entities/workout_entity.dart';
 import 'package:gymbrow/app/presentation/bases/gb_base_view.dart';
 import 'package:gymbrow/app/presentation/workout/controllers/workout_view_controller.dart';
@@ -9,7 +10,9 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(controller.weekday.nome),
+      ),
       body: FutureBuilder(
         future: controller.listar(),
         builder: (context, snapshot) {
