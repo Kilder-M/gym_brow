@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:gymbrow/app/presentation/bases/gb_base_view.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends GBBaseView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
+    
     return Obx(
       () => Scaffold(
-        // appBar: AppBar(
-        //   title: const Text('Gymbrow'),
-        // ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
             color: context.theme.colorScheme.background,
