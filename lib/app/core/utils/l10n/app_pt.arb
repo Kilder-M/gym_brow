@@ -1,6 +1,7 @@
 {   
     "language" : "portugues",
     "workout" : "Treino",
+    "new_workout" : "Novo Treino",
     "home" : "inicio",
     "profile" : "Perfil",
     "settings" : "Configurações",
@@ -10,5 +11,15 @@
     "thurday" : "Quinta",
     "friday" : "Sexta",
     "saturday" : "Sábado",
-    "sunday" : "Domingo"
+    "sunday" : "Domingo",
+    "repetitions" : "Repetitions",
+    "series" : "Series",
+    "rest_time" : "Rest time",
+    "name" : "Nome",
+    "observations" : "Observação",
+    "weight" : "Peso",
+    "save" : "Salvar",
+    "picture": "Foto",
+    "machine": "Maquina"
+
 }

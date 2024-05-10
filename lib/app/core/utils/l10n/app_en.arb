@@ -7,6 +7,10 @@
     "@workout": {
         "description": "Workout text"
     },
+    "new_workout": "New Workout",
+    "@new_workout": {
+        "description": "Workout new text"
+    },
     "home" : "Home",
     "@home": {
         "description": "Home text"
@@ -46,5 +50,41 @@
      "sunday" : "Sunday",
     "@sunday": {
         "description": "settings text"
+    },
+    "repetitions" : "Repetitions",
+    "@repetitions": {
+        "description": "Repetitions text"
+    },
+    "series" : "Series",
+    "@series": {
+        "description": "Series text"
+    },
+    "rest_time" : "Rest time",
+    "@rest_time": {
+        "description": "Rest time text"
+    },
+    "name" : "Name",
+    "@name": {
+        "description": "Name text"
+    },
+    "weight" : "Weight",
+    "@weight": {
+        "description": "weight text"
+    },
+    "observations" : "Observations",
+    "@observations": {
+        "description": "observations text"
+    },
+    "save" : "Save",
+    "@save": {
+        "description": "save text"
+    },
+    "picture": "Picture",
+    "@picture": {
+        "description": "picture text"
+    },
+    "machine": "Machine",
+    "@machine": {
+        "description": "machine text"
     }
 }

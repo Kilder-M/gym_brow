@@ -5,10 +5,12 @@ abstract class Routes {
   Routes._();
   static const home = _Paths.home;
   static const workoutView = _Paths.workoutView;
+  static const workoutForm = _Paths.workoutForm;
 }
 
 abstract class _Paths {
   _Paths._();
   static const home = '/home';
   static const workoutView = '/workout_view';
+  static const workoutForm = '/workout_form';
 }

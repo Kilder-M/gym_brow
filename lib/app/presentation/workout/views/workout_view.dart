@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:get/get.dart';
 import 'package:gymbrow/app/domain/entities/workout_entity.dart';
 import 'package:gymbrow/app/presentation/bases/gb_base_view.dart';
@@ -13,6 +10,12 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed('/workout_form');
+        },
+        child: const Icon(Icons.add),
+      ),
       appBar: AppBar(
         title: Text(controller.weekday.nome),
       ),
