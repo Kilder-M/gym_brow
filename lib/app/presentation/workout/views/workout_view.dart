@@ -12,7 +12,7 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.toNamed('/workout_form');
+          Get.toNamed('/workout_form',arguments: controller.weekday);
         },
         child: const Icon(Icons.add),
       ),

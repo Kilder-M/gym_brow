@@ -8,12 +8,13 @@ class WorkoutViewController extends GetxController {
   RxInt selectedDay = 0.obs;
   RxList workoutList = <WorkoutEntity>[].obs;
 
-
-
   final GetWorkoutListByWeekdayUseCase _getWorkoutListByweekday =
       Get.find<GetWorkoutListByWeekdayUseCase>();
 
   Future<List<WorkoutEntity>> listar() async {
-    return workoutList.value = await _getWorkoutListByweekday(weekday.id);
+    var test = await _getWorkoutListByweekday(weekday.id);
+    print(test);
+    workoutList.value = test;
+    return test;
   }
 }

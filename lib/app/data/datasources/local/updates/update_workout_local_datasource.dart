@@ -18,7 +18,8 @@ class UpdateWorkoutLocalDatasourceImp implements UpdateWorkoutDatasource {
         ,weight = ?
         ,is_done
         ,image_url
-        ,weekday = ? WHERE id = ?
+        ,weekday
+        ,observations = ? WHERE id = ?
       ''';
     final updateResponse = await databaseResponse.rawUpdate(
       sql,
@@ -31,6 +32,7 @@ class UpdateWorkoutLocalDatasourceImp implements UpdateWorkoutDatasource {
         workoutEntity.isDone,
         workoutEntity.imageUrl,
         workoutEntity.weekDay,
+        workoutEntity.observations,
       ],
     );
     return updateResponse != 0 ? true : false;

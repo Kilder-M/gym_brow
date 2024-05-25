@@ -12,14 +12,18 @@ class GetWorkoutListByWeekdayLocalDataSourceImp
   @override
   Future<List<WorkoutEntity>> call(int weekDay) async {
     final databaseResponse = await _databaseSQLiteImp();
-    List<Map<String, dynamic>> queryResponse = await databaseResponse.query(
-      'workout',
-      where: 'weekday = ?',
-      whereArgs: [weekDay]
-    );
+    List<Map<String, dynamic>> queryResponse;
+    try {
+      queryResponse = await databaseResponse
+          .query('workout', where: 'weekday = ?', whereArgs: [weekDay]);
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
     List<WorkoutDTO> workoutList = List.generate(queryResponse.length, (index) {
       var element = queryResponse[index];
-      return WorkoutDTO.fromMapLocalDataBase(element);
+      var a = WorkoutDTO.fromMapLocalDataBase(element);
+      print(a.toJsonLocalDataBase());
+      return a;
     });
     return workoutList;
   }

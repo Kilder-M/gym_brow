@@ -1,23 +1,40 @@
 class WorkoutEntity {
-  int id;
+  int? id;
   String name;
   int series;
   int repetitions;
-  double restTime;
-  double weight;
+  double? restTime;
+  double? weight;
   bool isDone;
-  String imageUrl;
+  String? imageUrl;
+  String? observations;
   int weekDay;
 
   WorkoutEntity({
-    required this.id,
-    required this.weight,
+    this.id,
+    this.weight,
+    this.observations,
     required this.name,
     required this.series,
     required this.repetitions,
-    required this.restTime,
-    required this.isDone,
-    required this.imageUrl,
+    this.restTime,
+    this.isDone = false,
+    this.imageUrl,
     required this.weekDay,
   });
+
+  @override
+  String toString() {
+    return '''
+    id: $id 
+    name: $name 
+    series: $series 
+    repetitions: $repetitions 
+    resttime: $restTime 
+    weigth: $weight 
+    isDone: $isDone 
+    imageUrl: $imageUrl 
+    observations: $observations 
+    weekDay: $weekDay''';
+  }
 }

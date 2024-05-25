@@ -9,6 +9,10 @@ class GetWorkoutByWeekdayRepositoryImp
 
   @override
   Future<List<WorkoutEntity>> call(int weekDay) async {
-    return _getWorkoutListByWeekdayDatasource(weekDay);
+    try {
+      return _getWorkoutListByWeekdayDatasource(weekDay);
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
   }
 }
