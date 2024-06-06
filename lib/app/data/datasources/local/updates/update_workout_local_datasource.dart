@@ -16,25 +16,31 @@ class UpdateWorkoutLocalDatasourceImp implements UpdateWorkoutDatasource {
         ,repetitions = ?
         ,rest_time = ?
         ,weight = ?
-        ,is_done
-        ,image_url
-        ,weekday
-        ,observations = ? WHERE id = ?
+        ,is_done = ?
+        ,image_url = ?
+        ,weekday = ?
+        ,observations = ?
+        WHERE id = ?
       ''';
-    final updateResponse = await databaseResponse.rawUpdate(
-      sql,
-      [
-        workoutEntity.name,
-        workoutEntity.series,
-        workoutEntity.repetitions,
-        workoutEntity.restTime,
-        workoutEntity.weight,
-        workoutEntity.isDone,
-        workoutEntity.imageUrl,
-        workoutEntity.weekDay,
-        workoutEntity.observations,
-      ],
-    );
-    return updateResponse != 0 ? true : false;
+    try {
+      final updateResponse = await databaseResponse.rawUpdate(
+        sql,
+        [
+          workoutEntity.name,
+          workoutEntity.series,
+          workoutEntity.repetitions,
+          workoutEntity.restTime,
+          workoutEntity.weight,
+          workoutEntity.isDone == true ? 1 : 0,
+          workoutEntity.imageUrl,
+          workoutEntity.weekDay,
+          workoutEntity.observations,
+          workoutEntity.id
+        ],
+      );
+      return updateResponse != 0 ? true : false;
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
   }
 }

@@ -3,22 +3,17 @@ import 'package:get/get.dart';
 import 'package:gymbrow/app/core/utils/models/weekday_dart';
 import 'package:gymbrow/app/domain/entities/workout_entity.dart';
 import 'package:gymbrow/app/domain/usecases/saves/save_workout_usecase.dart';
+import 'package:gymbrow/app/domain/usecases/updates/update_workout_usecase.dart';
 
 class WorkoutFormViewController extends GetxController {
   final SaveWorkoutUsecase _saveWorkoutUsecase = Get.find<SaveWorkoutUsecase>();
-  Weekday weekDay = Get.arguments;
+  final UpdateWorkoutUsecase _updateWorkoutUsecase =
+      Get.find<UpdateWorkoutUsecase>();
+  Weekday weekDay = Get.arguments[0];
 
   final formKey = GlobalKey<FormState>();
 
-  WorkoutEntity workoutEntity = WorkoutEntity(
-    weight: 0.0,
-    name: '',
-    series: 0,
-    repetitions: 0,
-    restTime: 0.0,
-    isDone: false,
-    weekDay: DateTime.now().day,
-  );
+  WorkoutEntity workoutEntity = Get.arguments[1];
 
   WorkoutFormViewController() {
     workoutEntity.weekDay = weekDay.id;
@@ -26,6 +21,16 @@ class WorkoutFormViewController extends GetxController {
 
   Future<bool> saveWorkoutUsecase() async {
     var result = await _saveWorkoutUsecase(workoutEntity);
+    if (result) {
+      print('salvou com sucesso');
+    } else {
+      print('n salvou');
+    }
+    return result;
+  }
+
+  Future<bool> updateWorkoutUsecase() async {
+    var result = await _updateWorkoutUsecase(workoutEntity);
     if (result) {
       print('salvou com sucesso');
     } else {

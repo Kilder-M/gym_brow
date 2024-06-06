@@ -13,7 +13,21 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.toNamed('/workout_form', arguments: controller.weekday);
+          Get.toNamed(
+            '/workout_form',
+            arguments: [
+              controller.weekday,
+              WorkoutEntity(
+                weight: 0.0,
+                name: '',
+                series: 0,
+                repetitions: 0,
+                restTime: 0.0,
+                isDone: false,
+                weekDay: DateTime.now().day,
+              ),
+            ],
+          );
         },
         child: const Icon(Icons.add),
       ),
@@ -59,7 +73,12 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                                     ),
                                   ),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Get.toNamed('/workout_form', arguments: [
+                                        controller.weekday,
+                                        workoutEntity,
+                                      ]);
+                                    },
                                     child: Text(
                                       AppLocalizations.of(context)!.edit,
                                     ),

@@ -140,7 +140,11 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                     child: FilledButton(
                       onPressed: () {
                         if (controller.formKey.currentState!.validate()) {
-                          controller.saveWorkoutUsecase();
+                          if (controller.workoutEntity.id != null) {
+                            controller.updateWorkoutUsecase();
+                          } else {
+                            controller.saveWorkoutUsecase();
+                          }
                         }
                       },
                       child: Text(AppLocalizations.of(context)!.save),

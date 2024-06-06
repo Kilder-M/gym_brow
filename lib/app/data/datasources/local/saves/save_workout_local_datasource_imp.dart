@@ -15,13 +15,13 @@ class SaveWorkoutLocalDatasourceImp implements SaveWorkoutDatasource {
         VALUES(?,?,?,?,?,?,?,?,?)
         ''';
     try {
-      var saveResponse = await databaseResponse.rawInsert(sql, [
+      final saveResponse = await databaseResponse.rawInsert(sql, [
         workoutEntity.name,
         workoutEntity.series,
         workoutEntity.repetitions,
         workoutEntity.restTime,
         workoutEntity.weight,
-        workoutEntity.isDone,
+        workoutEntity.isDone == true ? 1 : 0,
         workoutEntity.imageUrl,
         workoutEntity.weekDay,
         workoutEntity.observations,
