@@ -86,5 +86,17 @@
     "machine": "Machine",
     "@machine": {
         "description": "machine text"
+    },
+     "delete": "Delete",
+    "@delete": {
+        "description": "delete text"
+    },
+    "edit": "Edit",
+    "@edit": {
+        "description": "edit text"
+    },
+    "what_would_you_like_to_do": "What would you like to do ?",
+    "@what_would_you_like_to_do": {
+        "description": "What would you like to do ? text"
     }
 }

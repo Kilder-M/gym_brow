@@ -20,6 +20,9 @@
     "weight" : "Peso",
     "save" : "Salvar",
     "picture": "Foto",
-    "machine": "Maquina"
+    "machine": "Maquina",
+    "delete": "Delete",
+    "edit": "Edit",
+    "what_would_you_like_to_do": "O que deseja fazer ?"
 
 }
