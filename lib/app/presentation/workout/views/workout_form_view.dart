@@ -1,5 +1,6 @@
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gymbrow/app/presentation/bases/gb_base_view.dart';
 import 'package:gymbrow/app/presentation/widgets/gb_text_field_widget.dart';
 import 'package:gymbrow/app/presentation/workout/controllers/workout_form_view_controller.dart';
@@ -142,8 +143,10 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                         if (controller.formKey.currentState!.validate()) {
                           if (controller.workoutEntity.id != null) {
                             controller.updateWorkoutUsecase();
+                            Get.back();
                           } else {
                             controller.saveWorkoutUsecase();
+                            Get.back();
                           }
                         }
                       },

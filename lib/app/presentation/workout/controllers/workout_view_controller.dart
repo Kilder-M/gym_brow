@@ -7,7 +7,7 @@ import 'package:gymbrow/app/domain/usecases/gets/get_workout_list_by_weekday_use
 class WorkoutViewController extends GetxController {
   Weekday weekday = Get.arguments;
   RxInt selectedDay = 0.obs;
-  RxList workoutList = <WorkoutEntity>[].obs;
+  RxList<WorkoutEntity> workoutList = <WorkoutEntity>[].obs;
 
   final GetWorkoutListByWeekdayUseCase _getWorkoutListByweekday =
       Get.find<GetWorkoutListByWeekdayUseCase>();
@@ -20,8 +20,12 @@ class WorkoutViewController extends GetxController {
   }
 
   Future<bool> deleteWorkout(WorkoutEntity workoutEntity) async {
-    bool result = await _deleteWorkoutUsecase(workoutEntity);
-    workoutList.remove(workoutEntity);
-    return result;
+    try {
+      bool result = await _deleteWorkoutUsecase(workoutEntity);
+      workoutList.remove(workoutEntity);
+      return result;
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
   }
 }
