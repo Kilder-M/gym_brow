@@ -57,15 +57,17 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Expanded(
-                                  child: Tooltip(
-                                    message: workoutEntity.name,
-                                    child: Text(
-                                      workoutEntity.name,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                                title: Tooltip(
+                                  message: workoutEntity.name,
+                                  child: Text(
+                                    workoutEntity.name,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
+                                ),
+                                content: Text(
+                                  AppLocalizations.of(context)!
+                                      .what_would_you_like_to_do,
                                 ),
                                 actions: [
                                   TextButton(
