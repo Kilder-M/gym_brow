@@ -21,24 +21,21 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: CircleAvatar(
-                            child: Icon(Icons.camera_alt_outlined),
-                          ),
-                        ),
-                        Text(AppLocalizations.of(context)!.machine)
-                      ],
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 8),
+                //   child: Column(
+                //     children: [
+                //       const SizedBox(
+                //         height: 80,
+                //         width: 80,
+                //         child: CircleAvatar(
+                //           child: Icon(Icons.camera_alt_outlined),
+                //         ),
+                //       ),
+                //       Text(AppLocalizations.of(context)!.machine)
+                //     ],
+                //   ),
+                // ),
                 GBTextFormField(
                   labelText: AppLocalizations.of(context)!.name,
                   initialValue: controller.workoutEntity.name.isNotEmpty

@@ -57,10 +57,15 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text(workoutEntity.name),
-                                content: Text(
-                                  AppLocalizations.of(context)!
-                                      .what_would_you_like_to_do,
+                                title: Expanded(
+                                  child: Tooltip(
+                                    message: workoutEntity.name,
+                                    child: Text(
+                                      workoutEntity.name,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
                                 ),
                                 actions: [
                                   TextButton(
@@ -74,6 +79,7 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                                   ),
                                   TextButton(
                                     onPressed: () {
+                                      Get.back();
                                       Get.toNamed('/workout_form', arguments: [
                                         controller.weekday,
                                         workoutEntity,
@@ -82,6 +88,99 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                                     child: Text(
                                       AppLocalizations.of(context)!.edit,
                                     ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text(
+                                  workoutEntity.name,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: context.textTheme.titleMedium,
+                                ),
+                                actions: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 4.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${AppLocalizations.of(context)!.workout}:',
+                                          style: context.textTheme.titleSmall,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: IconLabelValue(
+                                                icon: Icons.repeat,
+                                                value:
+                                                    '${workoutEntity.series} x ${workoutEntity.repetitions}',
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: IconLabelValue(
+                                                icon: Icons.timer_outlined,
+                                                value:
+                                                    '${workoutEntity.restTime.toString()}min',
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: IconLabelValue(
+                                                icon: Icons.fitness_center,
+                                                value:
+                                                    '${workoutEntity.weight}kg',
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${AppLocalizations.of(context)!.observations}:',
+                                        style: context.textTheme.titleSmall,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.fromLTRB(
+                                            0, 8, 0, 8),
+                                        width: double.infinity,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.25,
+                                        decoration: BoxDecoration(
+                                          color: context.theme.colorScheme
+                                              .secondaryContainer,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 6,
+                                            workoutEntity.observations ?? '',
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               );
@@ -135,7 +234,6 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                           children: [
                             Expanded(
                               child: IconLabelValue(
-                                tooltipMessage: '',
                                 icon: Icons.repeat,
                                 value:
                                     '${workoutEntity.series} x ${workoutEntity.repetitions}',
@@ -143,7 +241,6 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                             ),
                             Expanded(
                               child: IconLabelValue(
-                                tooltipMessage: '',
                                 icon: Icons.timer_outlined,
                                 value:
                                     '${workoutEntity.restTime.toString()}min',
@@ -151,7 +248,6 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                             ),
                             Expanded(
                               child: IconLabelValue(
-                                tooltipMessage: '',
                                 icon: Icons.fitness_center,
                                 value: '${workoutEntity.weight}kg',
                               ),
@@ -174,18 +270,19 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
 class IconLabelValue extends StatelessWidget {
   final IconData icon;
   final String value;
-  final String tooltipMessage;
+  final String? tooltipMessage;
 
-  const IconLabelValue(
-      {super.key,
-      required this.icon,
-      required this.value,
-      required this.tooltipMessage});
+  const IconLabelValue({
+    super.key,
+    required this.icon,
+    required this.value,
+    this.tooltipMessage,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: tooltipMessage,
+      message: tooltipMessage ?? '',
       child: Row(
         children: [
           Icon(
