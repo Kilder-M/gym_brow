@@ -16,15 +16,17 @@ class GetWorkoutListByWeekdayLocalDataSourceImp
     try {
       queryResponse = await databaseResponse
           .query('workout', where: 'weekday = ?', whereArgs: [weekDay]);
+      List<WorkoutDTO> workoutList = List.generate(
+        queryResponse.length,
+        (index) {
+          Map<String,dynamic> rowElement = queryResponse[index];
+          WorkoutDTO element = WorkoutDTO.fromMapLocalDataBase(rowElement);
+          return element;
+        },
+      );
+      return workoutList;
     } on Exception catch (e) {
       throw Exception(e);
     }
-    List<WorkoutDTO> workoutList = List.generate(queryResponse.length, (index) {
-      var element = queryResponse[index];
-      var a = WorkoutDTO.fromMapLocalDataBase(element);
-      print(a.toJsonLocalDataBase());
-      return a;
-    });
-    return workoutList;
   }
 }
