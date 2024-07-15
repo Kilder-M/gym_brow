@@ -18,7 +18,6 @@ class WorkoutFormViewBinding extends Bindings {
   void dependencies() {
     //controller
     Get.lazyPut<WorkoutFormViewController>(() => WorkoutFormViewController());
-    Get.lazyPut<WorkoutFormViewController>(() => WorkoutFormViewController());
 
     //DataSources
     Get.lazyPut<SaveWorkoutDatasource>(

@@ -10,53 +10,63 @@ import '../controllers/home_controller.dart';
 class HomeView extends GBBaseView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-    
-    return Obx(
-      () => Scaffold(
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            color: context.theme.colorScheme.background,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 20,
-                color: Colors.black.withOpacity(.1),
+    return FutureBuilder(
+      future: controller.setConfigurationPreference(),
+      builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Scaffold(
+          body: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      } else {
+        return Obx(
+          () => Scaffold(
+            bottomNavigationBar: Container(
+              decoration: BoxDecoration(
+                color: context.theme.colorScheme.background,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 20,
+                    color: Colors.black.withOpacity(.1),
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
+                child: GNav(
+                  gap: 4,
+                  selectedIndex: controller.selectedItem.value,
+                  padding: const EdgeInsets.all(16),
+                  tabBackgroundColor: context.theme.splashColor,
+                  tabMargin: const EdgeInsets.all(2),
+                  onTabChange: (value) => controller.selectedItem.value = value,
+                  tabs: [
+                    GButton(
+                      icon: Icons.fitness_center_rounded,
+                      text: AppLocalizations.of(context)!.workout,
+                    ),
+                    GButton(
+                      icon: Icons.person_rounded,
+                      text: AppLocalizations.of(context)!.profile,
+                    ),
+                    GButton(
+                      icon: Icons.settings_rounded,
+                      text: AppLocalizations.of(context)!.settings,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            child: GNav(
-              gap: 4,
-              selectedIndex: controller.selectedItem.value,
-              padding: const EdgeInsets.all(16),
-              tabBackgroundColor: context.theme.splashColor,
-              tabMargin: const EdgeInsets.all(2),
-              onTabChange: (value) => controller.selectedItem.value = value,
-              tabs: [
-                GButton(
-                  icon: Icons.fitness_center_rounded,
-                  text: AppLocalizations.of(context)!.workout,
-                ),
-                GButton(
-                  icon: Icons.person_rounded,
-                  text: AppLocalizations.of(context)!.profile,
-                ),
-                GButton(
-                  icon: Icons.settings_rounded,
-                  text: AppLocalizations.of(context)!.settings,
-                ),
-              ],
-            ),
+            body: controller.tabs.elementAt(controller.selectedItem.value),
           ),
-        ),
-        body: controller.tabs.elementAt(controller.selectedItem.value),
-      ),
-    );
+        );
+      }
+    });
   }
 }

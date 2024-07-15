@@ -15,22 +15,17 @@ class SettingsTab extends GBBaseView<HomeController> {
       ),
       body: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-        trailing: SizedBox(
-          width: 50,
-          height: 30,
-          child: FittedBox(
-            fit: BoxFit.fill,
-            child: Obx(
-              () => Switch(
-                value: controller.isDarkTheme.value,
-                onChanged: (bool value) {
-                  controller.isDarkTheme.value = value;
-                  Get.changeTheme(controller.isDarkTheme.value
-                      ? ThemeData.dark()
-                      : ThemeData.light());
-                },
-              ),
-            ),
+        trailing: Obx(
+          () => Switch(
+            value: controller.isDarkTheme.value,
+            onChanged: (bool value) {
+              controller.isDarkTheme.value = value;
+              Get.changeTheme(
+                controller.isDarkTheme.value
+                    ? ThemeData.dark()
+                    : ThemeData.light(),
+              );
+            },
           ),
         ),
         title: const Row(

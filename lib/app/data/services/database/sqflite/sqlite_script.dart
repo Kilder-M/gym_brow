@@ -13,6 +13,18 @@ const createWorkoutTable = '''
       )
 ''';
 
+const createConfigurationPreference = '''
+
+  CREATE TABLE configuration_preference(
+  theme_mode INTEGER
+  language VARCHAR[6]
+)
+''';
+
+const initialConfigurationPreference = '''
+  INSERT INTO configuration_preference (theme_mode) VALUES (1)
+''';
+
 const insertWorkoutTest = '''
   INSERT INTO workout(id,name,series,repetitions,rest_time,weight,is_done,image_url,weekday,observations)
   VALUES(1,'Crucifixo invertido',3,12,1.40,30.0,0,'asdasdasdasdasd.com','5','observations')

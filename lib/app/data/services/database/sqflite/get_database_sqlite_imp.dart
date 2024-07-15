@@ -4,15 +4,18 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class GetDatabaseSQLiteImp implements GetDatabase {
+  
   @override
   Future<Database> call() async {
     String path = join(await getDatabasesPath(), 'gymbrow');
     // deleteDatabase(path);
-    final database = await openDatabase(
+    final Database database = await openDatabase(
       path,
       version: 1,
       onCreate: (db, version) {
         db.execute(createWorkoutTable);
+        db.execute(createConfigurationPreference);
+        db.execute(initialConfigurationPreference);
         db.execute(insertWorkoutTest);
       },
     );
