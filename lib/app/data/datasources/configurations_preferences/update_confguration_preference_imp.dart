@@ -14,7 +14,7 @@ class UpdateConfigurationPreferenceImp
     final databaseResponse = await _getDatabaseSQLiteImp();
     const sql = '''
         UPDATE configuration_preference SET 
-        theme_mode = ?
+        theme_mode = ?,
         language = ?
       ''';
     try {

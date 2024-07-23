@@ -20,11 +20,7 @@ class SettingsTab extends GBBaseView<HomeController> {
             value: controller.isDarkTheme.value,
             onChanged: (bool value) {
               controller.isDarkTheme.value = value;
-              Get.changeTheme(
-                controller.isDarkTheme.value
-                    ? ThemeData.dark()
-                    : ThemeData.light(),
-              );
+              controller.changeThemeMode();
             },
           ),
         ),

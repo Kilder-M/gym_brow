@@ -9,16 +9,14 @@ class GetConfigurationPreferenceImp
   GetConfigurationPreferenceImp(this._databaseSQLiteImp);
 
   @override
-  Future<ConfigurationPreferenceDTO?> call() async {
+  Future<ConfigurationPreferenceDTO> call() async {
     final databaseResponse = await _databaseSQLiteImp();
     List<Map<String, dynamic>> queryResponse;
     try {
       queryResponse = await databaseResponse.query('configuration_preference');
-      if (queryResponse.firstOrNull != null) {
-        return ConfigurationPreferenceDTO.fromMapLocalDataBase(
-            queryResponse.firstOrNull!);
-      }
-      return null;
+
+      return ConfigurationPreferenceDTO.fromMapLocalDataBase(
+          queryResponse.firstOrNull!);
     } catch (e) {
       throw Exception(e);
     }

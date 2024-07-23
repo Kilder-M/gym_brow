@@ -17,12 +17,12 @@ const createConfigurationPreference = '''
 
   CREATE TABLE configuration_preference(
   theme_mode INTEGER
-  language VARCHAR[6]
+  ,language VARCHAR[6]
 )
 ''';
 
 const initialConfigurationPreference = '''
-  INSERT INTO configuration_preference (theme_mode) VALUES (1)
+  INSERT INTO configuration_preference (theme_mode,language) VALUES (0,'pt-br')
 ''';
 
 const insertWorkoutTest = '''
