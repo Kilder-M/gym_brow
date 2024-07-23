@@ -22,7 +22,7 @@ const createConfigurationPreference = '''
 ''';
 
 const initialConfigurationPreference = '''
-  INSERT INTO configuration_preference (theme_mode,language) VALUES (0,'pt-br')
+  INSERT INTO configuration_preference (theme_mode,language) VALUES (0,'pt')
 ''';
 
 const insertWorkoutTest = '''
