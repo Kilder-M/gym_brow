@@ -12,12 +12,7 @@ class HomeView extends GBBaseView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: controller.setConfigurationPreference(),
-      builder: (context, snapshot) {
-        return HomeInitialWidget(controller: controller);
-      },
-    );
+    return HomeInitialWidget(controller: controller);
   }
 }
 

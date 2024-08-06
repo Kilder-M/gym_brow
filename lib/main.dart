@@ -10,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() {
   runApp(
     GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Application",
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -17,7 +18,7 @@ void main() {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: L10n.all,
+      supportedLocales: L10n.allLanguage,
       initialRoute: AppPages.initial,
       getPages: AppPages.routes,
       theme: ThemeData(

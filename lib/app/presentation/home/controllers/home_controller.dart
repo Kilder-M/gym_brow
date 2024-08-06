@@ -7,16 +7,7 @@ import 'package:gymbrow/app/presentation/home/views/settings_tab.dart';
 import 'package:gymbrow/app/presentation/home/views/workout_days_tab.dart';
 
 class HomeController extends GetxController {
-  final getConfigurationPreferenceDataSource =
-      Get.find<GetConfigurationPreferenceDataSource>();
-  final updateConfigurationPreferenceDataSource =
-      Get.find<UpdateConfigurationPreferenceDataSource>();
-
   var selectedItem = 0.obs;
-
-  late ConfigurationPreferenceDTO configurationPreferenceDTO;
-
-  RxBool isDarkTheme = false.obs;
 
   List<Widget> tabs = [
     const WorkoutDaysTab(),
@@ -24,16 +15,29 @@ class HomeController extends GetxController {
     const SettingsTab(),
   ];
 
+  //Settings Tab
+  final getConfigurationPreferenceDataSource =
+      Get.find<GetConfigurationPreferenceDataSource>();
+  final updateConfigurationPreferenceDataSource =
+      Get.find<UpdateConfigurationPreferenceDataSource>();
+
+  late ConfigurationPreferenceDTO configurationPreferenceDTO;
+  late String locale;
+
+  RxBool isDarkTheme = false.obs;
+
   Future<ConfigurationPreferenceDTO?> loadConfigurationPreference() async {
     configurationPreferenceDTO = await getConfigurationPreferenceDataSource();
     print(configurationPreferenceDTO);
     return configurationPreferenceDTO;
   }
 
-  setConfigurationPreference() async {
+  @override
+  void onInit() async {
     ConfigurationPreferenceDTO? configurationPreference =
         await loadConfigurationPreference();
     if (configurationPreference != null) {
+      //Initializing theme
       Get.changeTheme(
         configurationPreference.themeMode == ThemeModeEnum.dark.value
             ? ThemeData.dark()
@@ -43,7 +47,12 @@ class HomeController extends GetxController {
           configurationPreference.themeMode == ThemeModeEnum.dark.value
               ? true
               : false;
+
+      //Initializing locale
+      locale = configurationPreference.language!;
+      await changeLocale(locale);
     }
+    super.onInit();
   }
 
   Future<bool> changeThemeMode() async {
@@ -54,6 +63,20 @@ class HomeController extends GetxController {
         isDarkTheme.value ? ThemeData.dark() : ThemeData.light(),
       );
       return true;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  changeLocale(String localeCode) async {
+    configurationPreferenceDTO.language = localeCode;
+    try {
+      await updateConfigurationPreferenceDataSource(configurationPreferenceDTO);
+      Get.updateLocale(
+        Locale(localeCode),
+      );
+      Get.fallbackLocale;
+      locale = localeCode;
     } catch (e) {
       throw Exception(e);
     }
