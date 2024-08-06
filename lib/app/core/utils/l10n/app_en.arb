@@ -98,5 +98,9 @@
     "what_would_you_like_to_do": "What would you like to do ?",
     "@what_would_you_like_to_do": {
         "description": "What would you like to do ? text"
+    },
+    "dark_mode": "Dark Mode",
+    "@dark_mode": {
+        "description": "Dark mode text"
     }
 }

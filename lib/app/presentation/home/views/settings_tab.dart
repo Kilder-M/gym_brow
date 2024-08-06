@@ -29,12 +29,11 @@ class SettingsTab extends GBBaseView<HomeController> {
                   },
                 ),
               ),
-              title: const Row(
+              title: Row(
                 children: [
                   Expanded(
                     child: Text(
-                      //Internacionalizar
-                      'Dark mode',
+                      AppLocalizations.of(context)!.dark_mode,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
