@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class GBTextFormField extends StatelessWidget {
   final int? maxLines;
@@ -14,11 +15,13 @@ class GBTextFormField extends StatelessWidget {
   final IconData? prefixIcon;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   const GBTextFormField({
     super.key,
     required this.labelText,
     this.initialValue,
+    this.inputFormatters,
     this.controller,
     this.prefixIcon,
     this.obscureText,
@@ -41,6 +44,7 @@ class GBTextFormField extends StatelessWidget {
       onChanged: onChanged,
       initialValue: initialValue,
       maxLines: maxLines ?? 1,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         suffixText: suffixText,
         labelText: labelText,
@@ -49,7 +53,6 @@ class GBTextFormField extends StatelessWidget {
         contentPadding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         filled: true,
-        fillColor: Colors.grey[200],
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),

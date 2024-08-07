@@ -5,8 +5,11 @@ import 'package:gymbrow/app/domain/entities/workout_entity.dart';
 import 'package:gymbrow/app/domain/usecases/saves/save_workout_usecase.dart';
 import 'package:gymbrow/app/domain/usecases/updates/update_workout_usecase.dart';
 import 'package:gymbrow/app/presentation/workout/controllers/workout_view_controller.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class WorkoutFormViewController extends GetxController {
+
+  
   final SaveWorkoutUsecase _saveWorkoutUsecase = Get.find<SaveWorkoutUsecase>();
   final UpdateWorkoutUsecase _updateWorkoutUsecase =
       Get.find<UpdateWorkoutUsecase>();
@@ -22,6 +25,9 @@ class WorkoutFormViewController extends GetxController {
   WorkoutFormViewController() {
     workoutEntity.weekDay = weekDay.id;
   }
+
+ var intTextMask = MaskTextInputFormatter(mask: '#');
+ var doubleTextMask = MaskTextInputFormatter(mask: '#.#');
 
   Future<bool> saveWorkoutUsecase() async {
     try {
@@ -47,8 +53,11 @@ class WorkoutFormViewController extends GetxController {
   }
 
   String? nameValidator(String? text) {
+    int maxLengh = 10;
     if (text == null || text.isEmpty) {
       return 'Obrigatorio';
+    }if(text.length > maxLengh){
+      return 'Valor max é de $maxLengh';
     }
     return null;
   }
@@ -65,8 +74,8 @@ class WorkoutFormViewController extends GetxController {
     return null;
   }
 
-  String? repetitionsValidator(String? text) {
-    RegExp regex = RegExp(r'^\d+$');
+  String? setsValidator(String? text) {
+    final RegExp regex = RegExp(r'^\d+$');
 
     if (text == null || text.isEmpty) {
       return 'Obrigatorio';

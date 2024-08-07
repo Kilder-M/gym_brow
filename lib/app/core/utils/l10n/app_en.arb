@@ -51,9 +51,9 @@
     "@sunday": {
         "description": "settings text"
     },
-    "repetitions" : "Repetitions",
-    "@repetitions": {
-        "description": "Repetitions text"
+    "sets" : "Sets",
+    "@sets": {
+        "description": "Sets text"
     },
     "series" : "Series",
     "@series": {

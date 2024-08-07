@@ -2,7 +2,7 @@ class WorkoutEntity {
   int? id;
   String name;
   int series;
-  int repetitions;
+  int sets;
   double? restTime;
   double? weight;
   bool isDone;
@@ -16,7 +16,7 @@ class WorkoutEntity {
     this.observations,
     required this.name,
     required this.series,
-    required this.repetitions,
+    required this.sets,
     this.restTime,
     this.isDone = false,
     this.imageUrl,
@@ -29,7 +29,7 @@ class WorkoutEntity {
     id: $id 
     name: $name 
     series: $series 
-    repetitions: $repetitions 
+    sets: $sets 
     resttime: $restTime 
     weigth: $weight 
     isDone: $isDone 

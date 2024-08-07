@@ -13,7 +13,7 @@ class UpdateWorkoutLocalDatasourceImp implements UpdateWorkoutDatasource {
     const sql = '''
         UPDATE workout SET name = ?
         ,series = ?
-        ,repetitions = ?
+        ,sets = ?
         ,rest_time = ?
         ,weight = ?
         ,is_done = ?
@@ -28,7 +28,7 @@ class UpdateWorkoutLocalDatasourceImp implements UpdateWorkoutDatasource {
         [
           workoutEntity.name,
           workoutEntity.series,
-          workoutEntity.repetitions,
+          workoutEntity.sets,
           workoutEntity.restTime,
           workoutEntity.weight,
           workoutEntity.isDone == true ? 1 : 0,
