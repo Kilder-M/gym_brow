@@ -44,7 +44,9 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                   initialValue: controller.workoutEntity.name.isNotEmpty
                       ? controller.workoutEntity.name
                       : null,
-                  validator: controller.nameValidator,
+                  validator: (text) {
+                    return controller.nameValidator(text, context);
+                  },
                   onChanged: (value) {
                     controller.workoutEntity.name = value;
                   },
@@ -60,7 +62,9 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                         initialValue: controller.workoutEntity.reps != 0
                             ? controller.workoutEntity.reps.toString()
                             : null,
-                        validator: controller.doubleValidator,
+                        validator: (text) {
+                          return controller.doubleValidator(text, context);
+                        },
                         keyboardType: TextInputType.number,
                         inputFormatters: [
                           controller.intTextMask,
@@ -81,7 +85,9 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                         initialValue: controller.workoutEntity.sets != 0
                             ? controller.workoutEntity.sets.toString()
                             : null,
-                        validator: controller.setsValidator,
+                        validator: (text) {
+                       return   controller.setsValidator(text, context);
+                        },
                         inputFormatters: [
                           controller.intTextMask,
                         ],

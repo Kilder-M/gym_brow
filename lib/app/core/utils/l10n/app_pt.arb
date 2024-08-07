@@ -24,6 +24,9 @@
     "delete": "Deletar",
     "edit": "Editar",
     "what_would_you_like_to_do": "O que deseja fazer ?",
-    "dark_mode": "Modo Escuro"
+    "dark_mode": "Modo Escuro",
+    "required": "Obrigatório",
+    "invalid": "Inválido",
+    "max_length_erro_text": "Tamanho máx é"
 
 }

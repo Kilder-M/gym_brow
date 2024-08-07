@@ -102,5 +102,18 @@
     "dark_mode": "Dark Mode",
     "@dark_mode": {
         "description": "Dark mode text"
+    },
+    "required": "Required",
+    "@required": {
+        "description": "required text"
+    },
+    "invalid": "Invalid",
+    "@invalid": {
+        "description": "Invalid text"
+    },
+    "max_length_erro_text": "Max length is",
+    "@max_length_erro_text": {
+        "description": "Max length erro text"
     }
+
 }
