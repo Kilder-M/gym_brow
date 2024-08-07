@@ -53,7 +53,7 @@ class WorkoutFormViewController extends GetxController {
   }
 
   String? nameValidator(String? text) {
-    int maxLengh = 10;
+    int maxLengh = 100;
     if (text == null || text.isEmpty) {
       return 'Obrigatorio';
     }if(text.length > maxLengh){
