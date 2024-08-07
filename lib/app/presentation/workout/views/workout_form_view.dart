@@ -1,11 +1,9 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gymbrow/app/presentation/bases/gb_base_view.dart';
 import 'package:gymbrow/app/presentation/widgets/gb_text_field_widget.dart';
 import 'package:gymbrow/app/presentation/workout/controllers/workout_form_view_controller.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
   const WorkoutFormView({super.key});
@@ -58,17 +56,17 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                   children: [
                     Expanded(
                       child: GBTextFormField(
-                        labelText: AppLocalizations.of(context)!.series,
-                        initialValue: controller.workoutEntity.series != 0
-                            ? controller.workoutEntity.series.toString()
+                        labelText: AppLocalizations.of(context)!.reps,
+                        initialValue: controller.workoutEntity.reps != 0
+                            ? controller.workoutEntity.reps.toString()
                             : null,
                         validator: controller.doubleValidator,
                         keyboardType: TextInputType.number,
                         inputFormatters: [
-                          MaskTextInputFormatter(mask: '#')
+                          controller.intTextMask,
                         ],
                         onChanged: (value) {
-                          controller.workoutEntity.series =
+                          controller.workoutEntity.reps =
                               int.tryParse(value) ?? 0;
                         },
                       ),
@@ -85,7 +83,7 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                             : null,
                         validator: controller.setsValidator,
                         inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
+                          controller.intTextMask,
                         ],
                         onChanged: (value) {
                           controller.workoutEntity.sets =
@@ -106,6 +104,9 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                         initialValue: controller.workoutEntity.weight != 0
                             ? controller.workoutEntity.weight.toString()
                             : null,
+                        inputFormatters: [
+                          controller.doubleTextMask,
+                        ],
                         onChanged: (value) {
                           controller.workoutEntity.weight =
                               double.tryParse(value) ?? 0;
@@ -122,6 +123,9 @@ class WorkoutFormView extends GBBaseView<WorkoutFormViewController> {
                             ? controller.workoutEntity.restTime.toString()
                             : null,
                         keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          controller.doubleTextMask,
+                        ],
                         onChanged: (value) {
                           controller.workoutEntity.restTime =
                               double.tryParse(value) ?? 0;

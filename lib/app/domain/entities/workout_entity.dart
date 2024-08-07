@@ -1,7 +1,7 @@
 class WorkoutEntity {
   int? id;
   String name;
-  int series;
+  int reps;
   int sets;
   double? restTime;
   double? weight;
@@ -15,7 +15,7 @@ class WorkoutEntity {
     this.weight,
     this.observations,
     required this.name,
-    required this.series,
+    required this.reps,
     required this.sets,
     this.restTime,
     this.isDone = false,
@@ -28,7 +28,7 @@ class WorkoutEntity {
     return '''
     id: $id 
     name: $name 
-    series: $series 
+    reps: $reps 
     sets: $sets 
     resttime: $restTime 
     weigth: $weight 

@@ -12,7 +12,7 @@ class UpdateWorkoutLocalDatasourceImp implements UpdateWorkoutDatasource {
     final databaseResponse = await _getDatabaseSQLiteImp();
     const sql = '''
         UPDATE workout SET name = ?
-        ,series = ?
+        ,reps = ?
         ,sets = ?
         ,rest_time = ?
         ,weight = ?
@@ -27,7 +27,7 @@ class UpdateWorkoutLocalDatasourceImp implements UpdateWorkoutDatasource {
         sql,
         [
           workoutEntity.name,
-          workoutEntity.series,
+          workoutEntity.reps,
           workoutEntity.sets,
           workoutEntity.restTime,
           workoutEntity.weight,

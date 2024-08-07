@@ -20,8 +20,8 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
               WorkoutEntity(
                 weight: 0.0,
                 name: '',
-                series: 0,
-                repetitions: 0,
+                reps: 0,
+                sets: 0,
                 restTime: 0.0,
                 isDone: false,
                 weekDay: DateTime.now().day,
@@ -127,7 +127,7 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                                               child: IconLabelValue(
                                                 icon: Icons.repeat,
                                                 value:
-                                                    '${workoutEntity.series} x ${workoutEntity.repetitions}',
+                                                    '${workoutEntity.reps} x ${workoutEntity.sets}',
                                               ),
                                             ),
                                             Expanded(
@@ -238,7 +238,7 @@ class WorkoutView extends GBBaseView<WorkoutViewController> {
                               child: IconLabelValue(
                                 icon: Icons.repeat,
                                 value:
-                                    '${workoutEntity.series} x ${workoutEntity.repetitions}',
+                                    '${workoutEntity.reps} x ${workoutEntity.sets}',
                               ),
                             ),
                             Expanded(

@@ -55,9 +55,9 @@
     "@sets": {
         "description": "Sets text"
     },
-    "series" : "Series",
-    "@series": {
-        "description": "Series text"
+    "reps" : "Reps",
+    "@reps": {
+        "description": "Reps text"
     },
     "rest_time" : "Rest time",
     "@rest_time": {

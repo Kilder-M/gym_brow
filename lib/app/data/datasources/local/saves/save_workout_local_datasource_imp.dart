@@ -11,13 +11,13 @@ class SaveWorkoutLocalDatasourceImp implements SaveWorkoutDatasource {
   Future<bool> call(WorkoutEntity workoutEntity) async {
     final databaseResponse = await _databaseSQLiteImp();
     const sql =
-        '''INSERT INTO workout(name,series,sets,rest_time,weight,is_done,image_url,weekday,observations)
+        '''INSERT INTO workout(name,reps,sets,rest_time,weight,is_done,image_url,weekday,observations)
         VALUES(?,?,?,?,?,?,?,?,?)
         ''';
     try {
       final saveResponse = await databaseResponse.rawInsert(sql, [
         workoutEntity.name,
-        workoutEntity.series,
+        workoutEntity.reps,
         workoutEntity.sets,
         workoutEntity.restTime,
         workoutEntity.weight,
