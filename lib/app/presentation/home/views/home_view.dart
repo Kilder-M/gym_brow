@@ -44,6 +44,7 @@ class HomeInitialWidget extends StatelessWidget {
             ),
             child: GNav(
               gap: 4,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               selectedIndex: controller.selectedItem.value,
               padding: const EdgeInsets.all(16),
               tabBackgroundColor: context.theme.splashColor,
@@ -54,10 +55,10 @@ class HomeInitialWidget extends StatelessWidget {
                   icon: Icons.fitness_center_rounded,
                   text: AppLocalizations.of(context)!.workout,
                 ),
-                GButton(
-                  icon: Icons.person_rounded,
-                  text: AppLocalizations.of(context)!.profile,
-                ),
+                // GButton(
+                //   icon: Icons.person_rounded,
+                //   text: AppLocalizations.of(context)!.profile,
+                // ),
                 GButton(
                   icon: Icons.settings_rounded,
                   text: AppLocalizations.of(context)!.settings,

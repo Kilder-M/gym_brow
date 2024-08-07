@@ -11,7 +11,7 @@ class HomeController extends GetxController {
 
   List<Widget> tabs = [
     const WorkoutDaysTab(),
-    const Center(child: Text('2')),
+    // const Center(child: Text('2')),
     const SettingsTab(),
   ];
 
