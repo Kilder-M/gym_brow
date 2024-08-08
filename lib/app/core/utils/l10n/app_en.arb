@@ -3,6 +3,10 @@
     "@language" : {
         "description": " The current language"
     },
+    "language_text" : "Language",
+    "@language_text" : {
+        "description": " Language text"
+    },
     "workout": "Workout",
     "@workout": {
         "description": "Workout text"

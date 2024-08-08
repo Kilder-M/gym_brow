@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,23 +53,31 @@ class SettingsTab extends GBBaseView<HomeController> {
                   Icons.language,
                 ),
               ),
-              title: DropdownButton<String>(
-                value: controller.locale,
-                items: L10n.allLanguage
-                    .map(
-                      (Locale e) => DropdownMenuItem<String>(
-                        value: e.languageCode,
-                        child: Text(
-                          e.languageCode.toUpperCase(),
-                        ),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
-                  if (value != null) {
-                    controller.changeLocale(value);
-                  }
-                },
+              title: Row(
+                children: [
+                  Text(AppLocalizations.of(context)!.language_text),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  DropdownButton<String>(
+                    value: controller.locale,
+                    items: L10n.allLanguage
+                        .map(
+                          (Locale e) => DropdownMenuItem<String>(
+                            value: e.languageCode,
+                            child: Text(
+                              e.languageCode.toUpperCase(),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      if (value != null) {
+                        controller.changeLocale(value);
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
           ],

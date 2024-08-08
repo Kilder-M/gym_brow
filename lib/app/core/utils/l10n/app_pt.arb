@@ -1,5 +1,6 @@
 {   
     "language" : "portugues",
+    "language_text" : "Idioma",
     "workout" : "Treino",
     "new_workout" : "Novo Treino",
     "home" : "inicio",

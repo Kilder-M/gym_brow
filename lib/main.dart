@@ -8,6 +8,7 @@ import 'package:gymbrow/app/core/utils/l10n/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -21,10 +22,13 @@ void main() {
       supportedLocales: L10n.allLanguage,
       initialRoute: AppPages.initial,
       getPages: AppPages.routes,
+      // theme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
+      darkTheme: ThemeData.dark(useMaterial3: true),
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: const Color.fromARGB(255, 101, 247, 106),
-        brightness: Brightness.light,
+        brightness: Brightness.light
       ),
     ),
   );

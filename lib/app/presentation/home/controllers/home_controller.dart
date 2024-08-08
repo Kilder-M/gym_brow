@@ -24,7 +24,7 @@ class HomeController extends GetxController {
   late ConfigurationPreferenceDTO configurationPreferenceDTO;
   late String locale;
 
-  RxBool isDarkTheme = false.obs;
+  RxBool isDarkTheme = (Get.isDarkMode ? true : false).obs;
 
   Future<ConfigurationPreferenceDTO?> loadConfigurationPreference() async {
     configurationPreferenceDTO = await getConfigurationPreferenceDataSource();
@@ -37,17 +37,6 @@ class HomeController extends GetxController {
     ConfigurationPreferenceDTO? configurationPreference =
         await loadConfigurationPreference();
     if (configurationPreference != null) {
-      //Initializing theme
-      Get.changeTheme(
-        configurationPreference.themeMode == ThemeModeEnum.dark.value
-            ? ThemeData.dark()
-            : ThemeData.light(),
-      );
-      isDarkTheme.value =
-          configurationPreference.themeMode == ThemeModeEnum.dark.value
-              ? true
-              : false;
-
       //Initializing locale
       locale = configurationPreference.language!;
       await changeLocale(locale);
@@ -56,12 +45,11 @@ class HomeController extends GetxController {
   }
 
   Future<bool> changeThemeMode() async {
-    configurationPreferenceDTO.themeMode = isDarkTheme.value ? 1 : 0;
+    configurationPreferenceDTO.themeMode = Get.isDarkMode ? 1 : 0;
     try {
       await updateConfigurationPreferenceDataSource(configurationPreferenceDTO);
-      Get.changeTheme(
-        isDarkTheme.value ? ThemeData.dark() : ThemeData.light(),
-      );
+      Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+      Get.changeThemeMode(ThemeMode.light);
       return true;
     } catch (e) {
       throw Exception(e);
